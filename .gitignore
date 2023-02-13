@@ -131,4 +131,4 @@ dmypy.json
 .pyre/
 
 # Ignore data files
-.archive
+/archive
