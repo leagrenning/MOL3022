@@ -1,7 +1,16 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+from ml import ML
+
+ml = None
+
 app = FastAPI()
+
+@app.on_event("startup")
+async def startup_event():
+    global ml
+    ml = ML()
 
 '''
 The class the post method accepts
@@ -16,8 +25,7 @@ A post method that takes in the sequence of the protein and sends it to the mode
 async def predict_sequence(sequence: Sequence):
     protein_sequence = sequence.sequence
 
-    #TODO Use model and get predicted structure
-
-    protein_structure = "TODO: Predicted secondary structure from model"
+    pred = ml.predict(protein_sequence)
+    protein_structure = pred
 
     return {"structure": protein_structure}
