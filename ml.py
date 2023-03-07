@@ -5,9 +5,9 @@ from torch import nn
 
 import pandas as pd
 
-from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.text import Tokenizer, tokenizer_from_json
 from keras.utils import to_categorical, pad_sequences
-
+import os.path
 
 class ML:
     def __init__(self):
@@ -22,11 +22,26 @@ class ML:
 
         input_grams = self.n_grams(self.input_seqs)
 
+        path_encoder = ("./tolkenizer_encoder.json")
+        path_decoder = ("./tolkenizer_decoder.json")
+
         self.tokenizer_encoder = Tokenizer()
-        self.tokenizer_encoder.fit_on_texts(input_grams)
+        if (not os.path.exists(path_encoder)):
+            self.tokenizer_encoder.fit_on_texts(input_grams)
+        else:
+            tokenizer_encoder_json = ""
+            with open(path_encoder, 'r', encoding='utf-8') as f:
+                tokenizer_encoder_json = f.read()
+            self.tokenizer_encoder = tokenizer_from_json(tokenizer_encoder_json)
 
         self.tokenizer_decoder = Tokenizer(char_level=True)
-        self.tokenizer_decoder.fit_on_texts(target_seqs)
+        if (not os.path.exists(path_decoder)):
+            self.tokenizer_decoder.fit_on_texts(target_seqs)
+        else:
+            tokenizer_decoder_json = ""
+            with open(path_decoder, 'r', encoding='utf-8') as f:
+                tokenizer_decoder_json = f.read()
+            self.tokenizer_decoder = tokenizer_from_json(tokenizer_decoder_json)
 
         self.reverse_decoder_index = {value: key for key, value in self.tokenizer_decoder.word_index.items()}
 
