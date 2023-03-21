@@ -15,9 +15,16 @@ To open an Anaconda terminal, search for Anaconda in your operating system
 
 To be able to run the client application, Node.js must be installed. Open https://nodejs.org/en/download and follow the instructions for downloading on your operating system
 
-### Download project dependecies
+### Download project dependencies
 
-Open an Anaconda terminal
+Open an Anaconda terminal. After the correct terminal is opened, navigate to the project folder. This is done using the command ```cd path```. The path is the folders that must be entered to get to the project files. Make sure you also enter the project folder. If you need to exit a folder, use ```cd ..``` to enter a higher level in the hierarchy
+
+Heres an example
+```bash
+cd ../user/downloads/MOL3022
+```
+
+When you have navigated to the correct folder, enter the following
 
 ```
 conda create -n mol3022 python=3.9
@@ -30,22 +37,15 @@ pip install -r req.txt
 
 ### Starting the server
 
-Before you are able to test the program, you need to start the server who manages the model predicting the secondary structures. The server must be up and running before the client application is stared
+Before you are able to test the program, you need to start the server which manages the model predicting the secondary structures. The server must be up and running before the client application is stared
 
-Start by opening an Anaconda terminal. Make sure the mol3022 environment is activated. If it is activated, the command line will have ```(mol3022)``` written at the start of the line. If ```(base)``` is written, activate the environment by endering the following command
+Start by opening an Anaconda terminal. Make sure the mol3022 environment is activated. If the environment is activated, the command line will have ```(mol3022)``` written at the start of the line. If ```(base)``` is written, activate the environment by entering the following command
 
 ```
 conda activate mol3022
 ```
 
- After the correct terminal is opened, nagivate to the project folder. This is done using the command ```cd path```. The path is the folders that must be entered to get to the project files. Make sure you also enter the project folder. If you need to exit a folder, use ```cd ..``` to enter a higher level in the hierarchy
-
-Heres an example
-```bash
-cd ../user/downloads/MOL3022
-```
-
-When you have reached the project foler, run the following command:
+Make sure you have navigated to project folder before running the following command
 
 ```bash
 uvicorn main:app --reload
@@ -61,7 +61,7 @@ you have not managed to navigate to the correct folder
 
 If you want to see the documentation of the server endpoint, go to the following URL: ```http://127.0.0.1:8000/docs```
 
-The documentation is interactable and you are able to test the endpoint youself by clicking the ```Try it out``` button.
+The documentation is interactable and you are able to test the endpoint yourself by clicking the ```Try it out``` button.
 
 To stop the server, simply press ```Ctrl + c``` in the same terminal as the server is running
 
@@ -75,7 +75,7 @@ To train the model yourself, open a new Anaconda terminal, activate the mol3022 
 jupyter notebook
 ```
 
-This will start a jupyter notebook at a local URL. The URL can be found in the terminal
+This will start a Jupyter notebook at a local URL. The URL can be found in the terminal
 
 When you have opened the URL, open the ```lstm.ipynb``` file. In the menu located at the top, click the ```kerkel tab``` and then ```Restart & Run All```
 
