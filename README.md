@@ -77,7 +77,7 @@ jupyter notebook
 
 This will start a Jupyter notebook at a local URL. The URL can be found in the terminal
 
-When you have opened the URL, open the ```lstm.ipynb``` file. In the menu located at the top, click the ```kernel tab``` and then ```Restart & Run All```
+When you have opened the URL, open the ```lstm.ipynb``` file. In the menu located at the top, click the ```kernel tab``` and then ```Restart & Run All``` . Remember to unzip the data files before training
 
 When all code blocks have a run number next to it, the model has finished training (the code blocks will have a * if it is still working on it). If the server already is up and running, it will automatically restart and use the newly trained model
 
